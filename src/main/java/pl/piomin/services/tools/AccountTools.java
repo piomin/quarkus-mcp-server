@@ -9,21 +9,21 @@ import pl.piomin.services.repository.AccountRepository;
 @ApplicationScoped
 public class AccountTools {
 
-    AccountRepository AccountRepository;
+    AccountRepository accountRepository;
 
     public AccountTools(AccountRepository AccountRepository) {
-        this.AccountRepository = AccountRepository;
+        this.accountRepository = AccountRepository;
     }
 
     @Tool(description = "Find all Accounts by person ID")
     public Accounts getAccountsByPersonId(
             @ToolArg(name = "personId", description = "Person ID") Long personId) {
-        return new Accounts(AccountRepository.findByPersonId(personId));
+        return new Accounts(accountRepository.findByPersonId(personId));
     }
 
     @Tool(description = "Find all Accounts")
     public Accounts getAllAccounts() {
-        return new Accounts(AccountRepository.listAll());
+        return new Accounts(accountRepository.listAll());
     }
 
 }
