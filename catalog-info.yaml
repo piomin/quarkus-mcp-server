@@ -1,0 +1,32 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: quarkus-mcp-server
+  title: quarkus-mcp-server
+  annotations:
+    janus-idp.io/tekton: quarkus-mcp-server
+    tektonci/build-namespace: demo
+    tekton.dev/cicd : "true"
+    quay.io/repository-slug: pminkows/quarkus-mcp-server
+    github.com/project-slug: piomin/quarkus-mcp-server
+    sonarqube.org/project-key: piomin_quarkus-mcp-server
+    backstage.io/kubernetes-id: quarkus-mcp-server
+    backstage.io/techdocs-ref: dir:.
+    argocd/app-name: quarkus-mcp-server
+    prometheus.io/rule: container_memory_usage_bytes{pod=~"quarkus-mcp-server-.*"}|pod,rate(container_cpu_usage_seconds_total{pod=~"quarkus-mcp-server-.*"}[5m])|pod
+  links:
+    - url: https://devspaces.apps.piomin.eastus.aroapp.io#https://github.com/piomin/quarkus-mcp-server
+      title: 🚀 Develop App
+      icon: launch
+  tags:
+    - spring-boot
+    - java
+    - maven
+    - tekton
+    - argocd
+    - renovate
+    - sonarqube
+spec:
+  type: service
+  owner: piomin
+  lifecycle: experimental
