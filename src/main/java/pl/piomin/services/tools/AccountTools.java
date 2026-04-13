@@ -21,4 +21,9 @@ public class AccountTools {
         return new Accounts(AccountRepository.findByPersonId(personId));
     }
 
+    @Tool(description = "Find all Accounts")
+    public Accounts getAllAccounts() {
+        return new Accounts(AccountRepository.listAll());
+    }
+
 }
